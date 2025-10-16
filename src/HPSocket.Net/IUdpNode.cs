@@ -93,6 +93,11 @@ namespace HPSocket
         bool IsMultiCastLoop { get; set; }
 
         /// <summary>
+        /// 获取设置是否开启 IPv4/IPv6 双栈（默认：true）
+        /// </summary>
+        bool IsDualStack { get; set; }
+
+        /// <summary>
         /// 获取或设置工作线程数量（通常设置为 2 * CPU + 2）
         /// </summary>
         uint WorkerThreadCount { get; set; }

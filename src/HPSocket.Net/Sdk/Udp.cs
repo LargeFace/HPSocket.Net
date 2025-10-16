@@ -369,6 +369,10 @@ namespace HPSocket.Sdk
         [DllImport(HpSocketLibrary.DllName, CharSet = CharSet.Ansi, SetLastError = true)]
         public static extern bool HP_UdpNode_IsMultiCastLoop(IntPtr pNode);
         [DllImport(HpSocketLibrary.DllName, CharSet = CharSet.Ansi, SetLastError = true)]
+        public static extern void HP_UdpNode_SetDualStack(IntPtr pNode, bool bDualStack);
+        [DllImport(HpSocketLibrary.DllName, CharSet = CharSet.Ansi, SetLastError = true)]
+        public static extern bool HP_UdpNode_IsDualStack(IntPtr pNode);
+        [DllImport(HpSocketLibrary.DllName, CharSet = CharSet.Ansi, SetLastError = true)]
         public static extern void HP_UdpNode_SetWorkerThreadCount(IntPtr pNode, uint dwWorkerThreadCount);
         [DllImport(HpSocketLibrary.DllName, CharSet = CharSet.Ansi, SetLastError = true)]
         public static extern void HP_UdpNode_SetPostReceiveCount(IntPtr pNode, uint dwPostReceiveCount);

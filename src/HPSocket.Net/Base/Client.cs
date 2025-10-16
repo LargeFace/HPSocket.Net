@@ -26,7 +26,7 @@ namespace HPSocket.Base
         /// <summary>
         /// 代理连接状态
         /// </summary>
-        private int _proxyConnecteState;
+        private int _proxyConnectionState;
 
         /// <summary>
         /// 连接超时时间
@@ -352,7 +352,7 @@ namespace HPSocket.Base
 
             if (_proxyList?.Count > 0)
             {
-                _proxyConnecteState = 1; // 连接中
+                _proxyConnectionState = 1; // 连接中
 
                 var proxy = GetRandomProxyServer();
                 if ((proxy is Socks5Proxy socks5Proxy))
@@ -371,7 +371,7 @@ namespace HPSocket.Base
             }
             else
             {
-                _proxyConnecteState = 0; // 不使用代理
+                _proxyConnectionState = 0; // 不使用代理
             }
 
             bool ok;
@@ -485,9 +485,9 @@ namespace HPSocket.Base
             do
             {
                 await Task.Delay(10);
-            } while (_proxyConnecteState != 3 && _proxyConnecteState != 4);
+            } while (_proxyConnectionState != 3 && _proxyConnectionState != 4);
 
-            return _proxyConnecteState == 3;
+            return _proxyConnectionState == 3;
         }
 #endif
 
@@ -541,7 +541,7 @@ namespace HPSocket.Base
             {
                 if (_proxyList?.Count > 0)
                 {
-                    _proxyConnecteState = 2; // 协商中
+                    _proxyConnectionState = 2; // 协商中
 
                     var proxy = _nativeExtra.Proxy;
                     if (proxy == null)
@@ -643,7 +643,7 @@ namespace HPSocket.Base
 
                             OnProxyConnected?.Invoke(this, proxy);
 
-                            _proxyConnecteState = 3; // 已连接
+                            _proxyConnectionState = 3; // 已连接
 
                             if (OnConnect?.Invoke(this) == HandleResult.Error)
                             {
@@ -733,7 +733,7 @@ namespace HPSocket.Base
                         _nativeExtra = null;
                         OnProxyConnected?.Invoke(this, proxy);
 
-                        _proxyConnecteState = 3; // 已连接
+                        _proxyConnectionState = 3; // 已连接
 
                         if (OnConnect?.Invoke(this) == HandleResult.Error)
                         {
@@ -762,9 +762,9 @@ namespace HPSocket.Base
 
         protected HandleResult SdkOnClose(IntPtr sender, IntPtr connId, SocketOperation socketOperation, int errorCode)
         {
-            if (_proxyConnecteState != 3)
+            if (_proxyConnectionState != 3)
             {
-                _proxyConnecteState = 4;
+                _proxyConnectionState = 4;
             }
 
             return OnClose?.Invoke(this, socketOperation, errorCode) ?? HandleResult.Ignore;

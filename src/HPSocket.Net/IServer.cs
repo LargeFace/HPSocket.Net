@@ -126,6 +126,11 @@ namespace HPSocket
         bool IsMarkSilence { get; set; }
 
         /// <summary>
+        /// 获取或设置是否开启 IPv4/IPv6 双栈（默认：true）
+        /// </summary>
+        bool IsDualStack { get; set; }
+
+        /// <summary>
         /// 获取或设置数据发送策略
         /// </summary>
         SendPolicy SendPolicy { get; set; }

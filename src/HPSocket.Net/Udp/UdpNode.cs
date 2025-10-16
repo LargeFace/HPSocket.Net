@@ -116,6 +116,13 @@ namespace HPSocket.Udp
         }
 
         /// <inheritdoc />
+        public bool IsDualStack
+        {
+            get => Sdk.Udp.HP_UdpNode_IsDualStack(SenderPtr);
+            set => Sdk.Udp.HP_UdpNode_SetDualStack(SenderPtr, value);
+        }
+
+        /// <inheritdoc />
         public uint WorkerThreadCount
         {
             get => Sdk.Udp.HP_UdpNode_GetWorkerThreadCount(SenderPtr);

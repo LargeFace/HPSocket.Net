@@ -149,6 +149,13 @@ namespace HPSocket.Base
         }
 
         /// <inheritdoc />
+        public bool IsDualStack
+        {
+            get => Sdk.Server.HP_Server_IsDualStack(SenderPtr);
+            set => Sdk.Server.HP_Server_SetDualStack(SenderPtr, value);
+        }
+        
+        /// <inheritdoc />
         public SendPolicy SendPolicy
         {
             get => Sdk.Server.HP_Server_GetSendPolicy(SenderPtr);

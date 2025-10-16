@@ -160,6 +160,9 @@ namespace HPSocket.Sdk
         public static extern void HP_Server_SetMarkSilence(IntPtr pServer, bool bMarkSilence);
 
         [DllImport(HpSocketLibrary.DllName, CharSet = CharSet.Ansi, SetLastError = true)]
+        public static extern void HP_Server_SetDualStack(IntPtr pServer, bool bDualStack);
+
+        [DllImport(HpSocketLibrary.DllName, CharSet = CharSet.Ansi, SetLastError = true)]
         public static extern uint HP_Server_GetFreeSocketObjLockTime(IntPtr pServer);
 
         [DllImport(HpSocketLibrary.DllName, CharSet = CharSet.Ansi, SetLastError = true)]
@@ -182,5 +185,9 @@ namespace HPSocket.Sdk
 
         [DllImport(HpSocketLibrary.DllName, CharSet = CharSet.Ansi, SetLastError = true)]
         public static extern bool HP_Server_IsMarkSilence(IntPtr pServer);
+
+        [DllImport(HpSocketLibrary.DllName, CharSet = CharSet.Ansi, SetLastError = true)]
+        public static extern bool HP_Server_IsDualStack(IntPtr pServer);
+
     }
 }

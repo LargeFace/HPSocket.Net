@@ -620,7 +620,7 @@
             是否释放了
             </summary>
         </member>
-        <member name="F:HPSocket.Base.Client._proxyConnecteState">
+        <member name="F:HPSocket.Base.Client._proxyConnectionState">
             <summary>
             代理连接状态
             </summary>
